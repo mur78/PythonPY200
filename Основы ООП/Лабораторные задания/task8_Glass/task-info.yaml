@@ -1,10 +1,13 @@
 type: theory
 files:
+- name: __init__.py
+  visible: false
+  learner_created: false
 - name: task.py
   visible: true
   placeholders:
   - offset: 0
-    length: 47
+    length: 1629
     placeholder_text: '# TODO Добавить методы add_water и remove_water'
     dependency:
       section: Основы ООП
@@ -22,9 +25,6 @@ files:
     encrypted_possible_answer: |
       # TODO
   text: '# TODO Добавить методы add_water и remove_water'
-  learner_created: false
-- name: __init__.py
-  visible: false
   learner_created: false
 status: Solved
 record: -1
