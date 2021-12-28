@@ -7,7 +7,7 @@ files:
   visible: true
   placeholders:
   - offset: 0
-    length: 1629
+    length: 1625
     placeholder_text: '# TODO Добавить методы add_water и remove_water'
     dependency:
       section: Основы ООП
