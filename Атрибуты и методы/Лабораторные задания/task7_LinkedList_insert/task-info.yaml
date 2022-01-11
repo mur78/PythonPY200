@@ -13,15 +13,15 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 2863
-    length: 49
+  - offset: 2801
+    length: 602
     placeholder_text: '...  # TODO реализовать алгоритм вставки элемента'
     initial_state:
       length: 49
       offset: 2863
     initialized_from_dependency: false
-    selected: false
-    status: Failed
+    selected: true
+    status: Solved
     encrypted_possible_answer: |-
       if not isinstance(index, int):
                   raise TypeError()
@@ -199,22 +199,8 @@ files:
             self.is_valid(next_)
             self.next = next_
   learner_created: false
-status: Failed
+status: Solved
 feedback:
-  message: Incorrect
-  time: Tue, 28 Dec 2021 18:06:47 UTC
-  expected: |
-    [1, 2, 3]
-    [0, 1, 2, 3]
-    [0, 1, 2, 3, 4]
-    [0, 1, 2, 3, 4, 100]
-    [0, 1, 'wow', 2, 3, 4, 100]
-    True
-  actual: |
-    [1, 2, 3]
-    [1, 2, 3]
-    [1, 2, 3]
-    [1, 2, 3]
-    [1, 2, 3]
-    False
+  message: Congratulations!
+  time: Tue, 11 Jan 2022 16:45:03 UTC
 record: -1
