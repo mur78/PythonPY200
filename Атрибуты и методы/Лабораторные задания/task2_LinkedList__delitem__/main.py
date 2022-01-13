@@ -76,14 +76,14 @@ class LinkedList:
 
     # TODO алгоритм удаления
           if index == 0:
-              self.head = self.head.next
+              self.head = self.head.__next
           elif index == self.len - 1:
               t = self.step_by_step_on_nodes(index-1)
               t.next = None
           else:
               p_node = self.step_by_step_on_nodes(index - 1)
               d_node = p_node.next
-              next_node = d_node.next
+              next_node = d_node.__next
 
               self.linked_nodes(p_node, next_node)
 

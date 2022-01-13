@@ -12,19 +12,19 @@ node_B.next = node_C
 
 def pop(head):
     current_node = head
-    while current_node.next:
-        if current_node.next == None:
+    while current_node.__next:
+        if current_node.__next == None:
             del current_node
             break
         else:
-            current_node = current_node.next
+            current_node = current_node.__next
 
 def listValues(head):
   values = []
   current_node = head
-  while current_node.next:
+  while current_node.__next:
     values.append(current_node.value)
-    current_node = current_node.next
+    current_node = current_node.__next
   return values
 
 try:

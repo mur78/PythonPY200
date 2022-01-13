@@ -3,7 +3,7 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 555
+  - offset: 572
     length: 11
     placeholder_text: '...  # TODO'
     initial_state:
@@ -13,7 +13,7 @@ files:
     selected: false
     status: Solved
     encrypted_possible_answer: '...'
-  - offset: 709
+  - offset: 743
     length: 11
     placeholder_text: '...  # TODO'
     initial_state:
@@ -23,7 +23,7 @@ files:
     selected: false
     status: Solved
     encrypted_possible_answer: '...'
-  - offset: 845
+  - offset: 896
     length: 11
     placeholder_text: '...  # TODO'
     initial_state:

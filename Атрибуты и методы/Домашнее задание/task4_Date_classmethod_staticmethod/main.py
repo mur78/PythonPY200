@@ -13,15 +13,15 @@ class Date:
         self.year = year
 
         self.is_valid_date(self.day, self.month, self.year)
-
+    @staticmethod
     def is_leap_year(self, year: int):
         """Проверяет, является ли год високосным"""
         ...  # TODO
-
+    @staticmethod
     def get_max_day(self, month: int, year: int):
         """Возвращает максимальное количество дней в месяце для указанного года"""
         ...  # TODO
-
+    @staticmethod
     def is_valid_date(self, day: int, month: int, year: int):
         """Проверяет, является ли дата корректной"""
         ...  # TODO

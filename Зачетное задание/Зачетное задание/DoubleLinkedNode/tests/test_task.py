@@ -15,9 +15,9 @@ class TestCase(unittest.TestCase):
         #     node.is_valid("incorrect_type")
 
     def test_init_node(self):
-        # todo init node with next and without
+        # todo init node with __next and without
         ...
 
     def test_set_next(self):
-        # todo test set next
+        # todo test set __next
         ...
