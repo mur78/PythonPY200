@@ -89,22 +89,14 @@ class LinkedList:
 
           self.len -= 1
 
-    def index(self, value: Any) -> int:
-        """
-        Возвращает индекс переданного значения
-        :param value:
-            значение индекс которого нужно получить
-        :return: int
-            индекс заданного значения
-        """
-        current_node = self.head
-        if current_node.value == value:
-            return 0
+    def index(self, value: Any):
 
-        for i in range(1, self.len):
-            current_node = current_node.next
-            if current_node.value == value:
-                return i
+        current_node = self.head
+            for index in range(self.len):
+                if current_node.value == value:
+                    return index
+
+    current_node = current_node.next
 
     def to_list(self) -> list:
         return [linked_list_value for linked_list_value in self]

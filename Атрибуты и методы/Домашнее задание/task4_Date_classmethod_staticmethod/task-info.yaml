@@ -3,17 +3,17 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 572
-    length: 11
+  - offset: 556
+    length: 132
     placeholder_text: '...  # TODO'
     initial_state:
       length: 11
       offset: 555
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: '...'
-  - offset: 743
+  - offset: 797
     length: 11
     placeholder_text: '...  # TODO'
     initial_state:
@@ -23,7 +23,7 @@ files:
     selected: false
     status: Solved
     encrypted_possible_answer: '...'
-  - offset: 896
+  - offset: 929
     length: 11
     placeholder_text: '...  # TODO'
     initial_state:
@@ -70,6 +70,9 @@ files:
 - name: __init__.py
   visible: false
   learner_created: false
+- name: test.py
+  visible: true
+  learner_created: true
 status: Solved
 record: -1
 post_submission_on_open: true

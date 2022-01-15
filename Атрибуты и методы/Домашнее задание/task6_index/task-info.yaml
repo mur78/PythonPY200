@@ -1,5 +1,11 @@
 type: theory
 files:
+- name: __init__.py
+  visible: false
+  learner_created: false
+- name: node.py
+  visible: true
+  learner_created: true
 - name: main.py
   visible: true
   text: |
@@ -7,12 +13,6 @@ files:
         # Write your solution here
         pass
   learner_created: false
-- name: __init__.py
-  visible: false
-  learner_created: false
-- name: node.py
-  visible: true
-  learner_created: true
 status: Solved
 feedback:
   time: Sat, 08 Jan 2022 09:42:40 UTC
