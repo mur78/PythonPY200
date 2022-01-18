@@ -38,7 +38,9 @@ class DoubleLinkedNode(Node):
 
     def __init__(self, value, next_, prev):
         super().__init__(value, next_)
-        self.prev = prev #todo getter and setter
+        self.prev = prev
+
+    #todo getter and setter
 
     @property
     def prev(self):
@@ -53,8 +55,7 @@ class DoubleLinkedNode(Node):
         if not isinstance(node, (type(None), DoubleLinkedNode)):
             raise TypeError
 
-    # def __repr__(self) -> str:
-    #     return f"DoubleLinkedNode({self.value}, {None})" if self.next is None else f"DoubleLinkedNode({self.value}, DoubleLinkedNode({self.next}))"
-
+    def __repr__(self) -> str:
+        return f'DoubleLinkedNode({self.value}, next_={None}, prev={None})'
     def __str__(self) -> str:
         return str(self.value)

@@ -89,14 +89,14 @@ class LinkedList:
 
           self.len -= 1
 
-    def index(self, value: Any):
-
+    def index(self, value: Any) -> int:
         current_node = self.head
-            for index in range(self.len):
-                if current_node.value == value:
-                    return index
-
-    current_node = current_node.next
+        for i in range(self.len):
+            if current_node.value == value:
+                return i
+            else:
+                current_node = current_node.next
+        raise ValueError
 
     def to_list(self) -> list:
         return [linked_list_value for linked_list_value in self]
@@ -113,11 +113,3 @@ if __name__ == "__main__":
     linked_list = LinkedList(list_)
     print(linked_list)
 
-    del linked_list[1]
-    print(linked_list)
-
-    del linked_list[1]
-    print(linked_list)
-
-    del linked_list[0]
-    print(linked_list)

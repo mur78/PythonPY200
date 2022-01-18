@@ -1,7 +1,7 @@
 from typing import Any, Iterable, Optional
 
+import node
 from node import Node
-
 
 class LinkedList:
     def __init__(self, data: Iterable = None):
@@ -71,3 +71,68 @@ class LinkedList:
 
 
 # TODO Реализовать класс DoubleLinkedList
+
+class DoubleLinkedList(LinkedList):
+    def __init__(self, data: Iterable = None):
+        """Конструктор связного списка"""
+        self.len = 0
+        self.head: Optional[node.DoubleLinkedNode] = None
+        self.tail = self.head
+
+        if data is not None:
+            for value in data:
+                self.append(value)
+
+    def append(self, value: Any):
+        """ Добавление элемента в конец связного списка. """
+        append_node = node.DoubleLinkedNode(value)
+
+        if self.head is None:
+            self.head = self.tail = append_node
+        else:
+            self.linked_nodes(self.tail, append_node)
+            self.tail = append_node
+
+        self.len += 1
+
+    def step_by_step_on_nodes(self, index: int) -> node.DoubleLinkedNode:
+        """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
+        if not isinstance(index, int):
+            raise TypeError()
+
+        if not 0 <= index < self.len:  # для for
+            raise IndexError()
+
+        current_node = self.head
+        for _ in range(index):
+            current_node = current_node.next
+
+        return current_node
+
+    @staticmethod
+    def _linked_nodes(left: node.DoubleLinkedNode, right: node.DoubleLinkedNode) -> None:
+        print('_linked_nodes_Double')
+        left.next = right
+        right.prev = left
+
+
+    def __getitem__(self, index: int) -> Any:
+        """ Метод возвращает значение узла по указанному индексу. """
+        node.DoubleLinkedNode = self.step_by_step_on_nodes(index)
+        return node.DoubleLinkedNode(value)
+
+    def __setitem__(self, index: int, value: Any) -> None:
+     """ Метод устанавливает значение узла по указанному индексу. """
+        #node.DoubleLinkedNode = self.step_by_step_on_nodes(index)
+        #node.DoubleLinkedNode = self.step_by_step_on_nodes(index)
+        # node.DoubleLinkedNode(value) = value ???
+
+    def to_list(self) -> list:
+        return [Double_linked_list_value for Double_linked_list_value in self]
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.to_list()})"
+
+    def __str__(self) -> str:
+        return f"{self.to_list()}"
+
