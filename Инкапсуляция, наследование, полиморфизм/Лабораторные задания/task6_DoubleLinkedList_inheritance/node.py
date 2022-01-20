@@ -51,13 +51,15 @@ class DoubleLinkedNode(Node):
 
     def __repr__(self) -> str:
         """Метод должен возвращать строку, показывающую, как может быть создан экземпляр."""
-        return f"DoubleLinkedNode({self.value}, {self.prev}, {self.next})"
+        next_node = None if self.next is None else f"DoubleLinkedNode({self.next.value})"
+        # todo prev_node
+        return f"DoubleLinkedNode({self.value}, {next_node}, {self.next})"
 
-    def __str__(self) -> str:
-        return str(self.value)
+    # def __str__(self) -> str:
+    #     return str(self.value)
 
-    def is_valid(self, DoubleLinkedNode: Any) -> None:
-        if not isinstance(DoubleLinkedNode, (type(None), DoubleLinkedNode)):
+    def is_valid(self, node: Any) -> None:
+        if not isinstance(node, (type(None), DoubleLinkedNode)):
             raise TypeError
 
     @property
@@ -68,3 +70,9 @@ class DoubleLinkedNode(Node):
     def prev(self, prev_: Optional['DoubleLinkedNode']):
         self.is_valid(prev_)
         self._prev = prev_
+
+
+if __name__ == '__main__':
+    double_node = DoubleLinkedNode(2, next_=DoubleLinkedNode(3), prev_=DoubleLinkedNode(1))
+    print(double_node)
+    print(repr(double_node))

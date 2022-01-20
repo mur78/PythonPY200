@@ -35,12 +35,19 @@ class Node:
 # TODO реализовать класс DoubleLinkedNode
 
 class DoubleLinkedNode(Node):
+    """ Класс, который описывает узел связного списка. """
 
-    def __init__(self, value, next_, prev):
+    def __init__(self, value: Any,
+                 next_: Optional['DoubleLinkedNode'] = None,
+                 prev_: Optional['DoubleLinkedNode'] = None):
+        """
+        Создаем новый узел для односвязного списка
+        :param value: Любое значение, которое помещено в узел
+        :param next_: следующий узел, если он есть
+        :param prev_: предыдущий узел, если он есть
+        """
         super().__init__(value, next_)
-        self.prev = prev
-
-    #todo getter and setter
+        self.prev = prev_
 
     @property
     def prev(self):
@@ -57,5 +64,6 @@ class DoubleLinkedNode(Node):
 
     def __repr__(self) -> str:
         return f'DoubleLinkedNode({self.value}, next_={None}, prev={None})'
-    def __str__(self) -> str:
-        return str(self.value)
+
+    # def __str__(self) -> str:
+    #     return str(self.value)

@@ -90,22 +90,22 @@ class LinkedList:
 
           self.len -= 1
 
-    def index(self, value: Any) -> int:
-        """
-        Возвращает индекс переданного значения
-        :param value:
-            значение индекс которого нужно получить
-        :return: int
-            индекс заданного значения
-        """
-        current_node = self.head
-        if current_node.value == value:
-            return 0
-
-        for i in range(1, self.len):
-            current_node = current_node.next
-            if current_node.value == value:
-                return i
+    # def index(self, value: Any) -> int:
+    #     """
+    #     Возвращает индекс переданного значения
+    #     :param value:
+    #         значение индекс которого нужно получить
+    #     :return: int
+    #         индекс заданного значения
+    #     """
+    #     current_node = self.head
+    #     if current_node.value == value:
+    #         return 0
+    #
+    #     for i in range(1, self.len):
+    #         current_node = current_node.next
+    #         if current_node.value == value:
+    #             return i
 
     def count_nodes(self):
         count = 0
