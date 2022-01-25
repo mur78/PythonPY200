@@ -48,7 +48,7 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 3053
+  - offset: 3120
     length: 0
     placeholder_text: '...  # TODO проверка индекса'
     initial_state:
@@ -63,7 +63,7 @@ files:
 
               if not 0 <= index < self.len:  # для for
                   raise IndexError()
-  - offset: 3053
+  - offset: 3120
     length: 0
     placeholder_text: '...  # TODO алгоритм удаления'
     initial_state:

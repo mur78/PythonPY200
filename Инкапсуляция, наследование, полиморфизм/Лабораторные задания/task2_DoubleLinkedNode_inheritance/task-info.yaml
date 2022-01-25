@@ -3,7 +3,7 @@ files:
 - name: task.py
   visible: true
   placeholders:
-  - offset: 948
+  - offset: 1357
     length: 41
     placeholder_text: '# TODO реализовать класс DoubleLinkedNode'
     initial_state:
@@ -55,6 +55,6 @@ files:
   learner_created: false
 status: Solved
 feedback:
-  time: Thu, 20 Jan 2022 17:21:38 UTC
+  time: Tue, 18 Jan 2022 18:37:04 UTC
 record: -1
 post_submission_on_open: true

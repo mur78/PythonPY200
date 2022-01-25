@@ -36,5 +36,8 @@ files:
   text: |
     ...
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Tue, 25 Jan 2022 15:46:04 UTC
 record: -1

@@ -66,6 +66,7 @@ class LinkedList:
         node.value = value
 
     def __delitem__(self, index: int):
+        """ Метод удаляет значение узла по указанному индексу. """
         if not isinstance(index, int):
             raise TypeError()
 

@@ -66,15 +66,13 @@ class LinkedList:
         node.value = value
 
     def __delitem__(self, index: int):
-          # TODO проверка индекса
+
           if not isinstance(index, int):
               raise TypeError()
 
-          # TODO проверка корректности границ индекса
           if not 0 <= index < self.len:  # для for
               raise IndexError()
 
-    # TODO алгоритм удаления
           if index == 0:
               self.head = self.head.__next
           elif index == self.len - 1:

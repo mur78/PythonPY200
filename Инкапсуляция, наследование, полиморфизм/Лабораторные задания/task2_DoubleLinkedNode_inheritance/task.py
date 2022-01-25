@@ -1,6 +1,5 @@
 from typing import Any, Optional
 
-
 class Node:
     """ Класс, который описывает узел связного списка. """
 
@@ -32,7 +31,6 @@ class Node:
         self.is_valid(next_)
         self._next = next_
 
-# TODO реализовать класс DoubleLinkedNode
 
 class DoubleLinkedNode(Node):
     """ Класс, который описывает узел связного списка. """
@@ -49,21 +47,31 @@ class DoubleLinkedNode(Node):
         super().__init__(value, next_)
         self.prev = prev_
 
-    @property
-    def prev(self):
-        return self._prev
+    def __repr__(self) -> str:
+        """Метод должен возвращать строку, показывающую, как может быть создан экземпляр."""
+        next_node = None if self.next is None else f"DoubleLinkedNode({self.next.value})"
+        # todo prev_node
+        prev_node = None if self.prev is None else f"DoubleLinkedNode({self.prev.value})"
 
-    @prev.setter
-    def prev(self, prev_: Optional["Node"]):
-        self.is_valid(prev_)
-        self._prev = prev_
+        return f"DoubleLinkedNode({self.value}, {next_node}, {prev_node})"
+
 
     def is_valid(self, node: Any) -> None:
         if not isinstance(node, (type(None), DoubleLinkedNode)):
             raise TypeError
 
-    def __repr__(self) -> str:
-        return f'DoubleLinkedNode({self.value}, next_={None}, prev={None})'
+    @property
+    def prev(self):
+        return self._prev
 
-    # def __str__(self) -> str:
-    #     return str(self.value)
+    @prev.setter
+    def prev(self, prev_: Optional['DoubleLinkedNode']):
+        self.is_valid(prev_)
+        self._prev = prev_
+
+
+if __name__ == "__main__":
+    double_node = DoubleLinkedNode(2, next_=DoubleLinkedNode(3), prev_=DoubleLinkedNode(1))
+    print(double_node)
+    print(repr(double_node))
+
