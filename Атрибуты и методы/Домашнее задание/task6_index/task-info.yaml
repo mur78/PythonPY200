@@ -13,6 +13,9 @@ files:
         # Write your solution here
         pass
   learner_created: false
+- name: test.py
+  visible: true
+  learner_created: true
 status: Solved
 feedback:
   time: Sat, 08 Jan 2022 09:42:40 UTC

@@ -1,10 +1,12 @@
 from typing import Any, Iterable, Optional
 
-import node
-
 from node import Node
 
-class LinkedList:
+from collections.abc import MutableSequence
+
+from typing import Any
+
+class LinkedList(MutableSequence):
     def __init__(self, data: Iterable = None):
         """Конструктор связного списка"""
         self.len = 0
@@ -106,6 +108,9 @@ class LinkedList:
 
                 self.len += 1
 
+    def __len__(self) -> int:
+        return self.len
+
     def to_list(self) -> list:
         return [linked_list_value for linked_list_value in self]
 
@@ -114,7 +119,6 @@ class LinkedList:
 
     def __str__(self) -> str:
         return f"{self.to_list()}"
-
 
 
 
@@ -149,8 +153,7 @@ class DoubleLinkedList(LinkedList):
     def __repr__(self) -> str:
         return f'DoubleLinkedNode({self.value}, next_={None}, prev={None})'
 
-    # def __str__(self) -> str:
-    #     return str(self.value)
+
 
 
 if __name__ == "__main__":
@@ -158,3 +161,5 @@ if __name__ == "__main__":
     linked_list = LinkedList(list_)
     print(linked_list)
 
+    linked_list.insert(100, 100)
+    print(linked_list)
