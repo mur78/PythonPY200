@@ -33,3 +33,5 @@ class Node:
         self._next = next_
 
     # TODO переоределить метод __del__
+    def __del__(self):
+        print("Вызван метод __dell__")

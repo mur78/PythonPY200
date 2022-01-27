@@ -1,12 +1,13 @@
 from typing import Any, Iterable, Optional
-
-from node import Node
-
 from collections.abc import MutableSequence
 
-from typing import Any
+from node import Node, DoubleLinkedNode
+
 
 class LinkedList(MutableSequence):
+
+    # CLASS_NODE = Node
+
     def __init__(self, data: Iterable = None):
         """Конструктор связного списка"""
         self.len = 0
@@ -29,12 +30,12 @@ class LinkedList(MutableSequence):
 
         self.len += 1
 
-    def step_by_step_on_nodes(self, index: int) -> Node:
+    def _step_by_step_on_nodes(self, index: int) -> Node:
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
-        if not isinstance(index, int):
+        if not isinstance(index, int):  # todo отдельный метод DRY
             raise TypeError()
 
-        if not 0 <= index < self.len:  # для for
+        if not 0 <= index < self.len:
             raise IndexError()
 
         current_node = self.head
@@ -55,12 +56,12 @@ class LinkedList(MutableSequence):
 
     def __getitem__(self, index: int) -> Any:
         """ Метод возвращает значение узла по указанному индексу. """
-        node = self.step_by_step_on_nodes(index)
+        node = self._step_by_step_on_nodes(index)
         return node.value
 
     def __setitem__(self, index: int, value: Any) -> None:
         """ Метод устанавливает значение узла по указанному индексу. """
-        node = self.step_by_step_on_nodes(index)
+        node = self._step_by_step_on_nodes(index)
         node.value = value
 
     def __delitem__(self, index: int):
@@ -68,16 +69,16 @@ class LinkedList(MutableSequence):
         if not isinstance(index, int):
             raise TypeError()
 
-        if not 0 <= index < self.len:  # для for
+        if not 0 <= index < self.len:
             raise IndexError()
 
         if index == 0:
             self.head = self.head.next
         elif index == self.len - 1:
-            tail = self.step_by_step_on_nodes(index - 1)
+            tail = self._step_by_step_on_nodes(index - 1)  # fixme self.tail
             tail.next = None
         else:
-            prev_node = self.step_by_step_on_nodes(index - 1)
+            prev_node = self._step_by_step_on_nodes(index - 1)
             del_node = prev_node.next
             next_node = del_node.next
 
@@ -85,28 +86,28 @@ class LinkedList(MutableSequence):
 
         self.len -= 1
 
-        def insert(self, index: int, value: Any) -> None:
-            """ Метод вставки узла по индексу. """
+    def insert(self, index: int, value: Any) -> None:  # todo test coverage
+        """ Метод вставки узла по индексу. """
 
-            if not isinstance(index, int):
-                raise TypeError()
+        if not isinstance(index, int):
+            raise TypeError()
 
-            insert_node = Node(value)
+        insert_node = Node(value)  # fixme self.CLASS_NODE
 
-            if index == 0:
-                insert_node.next = self.head
-                self.head = insert_node
-                self.len += 1
-            elif index >= self.len - 1:
-                self.append(value)
-            else:
-                prev_node = self.step_by_step_on_nodes(index - 1)
-                next_node = prev_node.next
+        if index == 0:
+            insert_node.next = self.head
+            self.head = insert_node
+            self.len += 1
+        elif index >= self.len - 1:
+            self.append(value)
+        else:
+            prev_node = self._step_by_step_on_nodes(index - 1)
+            next_node = prev_node.next
 
-                self._linked_nodes(prev_node, insert_node)
-                self._linked_nodes(insert_node, next_node)
+            self._linked_nodes(prev_node, insert_node)
+            self._linked_nodes(insert_node, next_node)
 
-                self.len += 1
+            self.len += 1
 
     def __len__(self) -> int:
         return self.len
@@ -124,9 +125,10 @@ class LinkedList(MutableSequence):
 
 class DoubleLinkedList(LinkedList):
     """ Класс, который описывает узел связного списка. """
+    # CLASS_NODE = DoubleLinkedNode
 
-    def __init__(self, value: Any,
-                 next_: Optional['DoubleLinkedNode'] = None,
+    def __init__(self, value: Any,  # fixme надо перегражать или нет и почему
+                 next_: Optional[DoubleLinkedNode] = None,
                  prev_: Optional['DoubleLinkedNode'] = None):
         """
         Создаем новый узел для односвязного списка
@@ -137,23 +139,17 @@ class DoubleLinkedList(LinkedList):
         super().__init__(value, next_)
         self.prev = prev_
 
-    @property
-    def prev(self):
-        return self._prev
 
-    @prev.setter
-    def prev(self, prev_: Optional["Node"]):
-        self.is_valid(prev_)
-        self._prev = prev_
-
-    def is_valid(self, node: Any) -> None:
-        if not isinstance(node, (type(None), DoubleLinkedNode)):
-            raise TypeError
-
-    def __repr__(self) -> str:
+    def __repr__(self) -> str:  # fixme
         return f'DoubleLinkedNode({self.value}, next_={None}, prev={None})'
 
 
+    # fixme testcase проверить какие типы узлов сидят в DoubleLinkedList (head какого типа???)
+
+
+def test_del_from_empty_list():
+    linked_list = LinkedList([])
+    del linked_list[0]  # self.AssertRaises(IndexError)
 
 
 if __name__ == "__main__":
@@ -163,3 +159,5 @@ if __name__ == "__main__":
 
     linked_list.insert(100, 100)
     print(linked_list)
+
+
