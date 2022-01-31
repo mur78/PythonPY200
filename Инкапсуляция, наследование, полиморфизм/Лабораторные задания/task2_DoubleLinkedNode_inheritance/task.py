@@ -52,7 +52,6 @@ class DoubleLinkedNode(Node):
         next_node = None if self.next is None else f"DoubleLinkedNode({self.next.value})"
         # todo prev_node
         prev_node = None if self.prev is None else f"DoubleLinkedNode({self.prev.value})"
-
         return f"DoubleLinkedNode({self.value}, {next_node}, {prev_node})"
 
 
