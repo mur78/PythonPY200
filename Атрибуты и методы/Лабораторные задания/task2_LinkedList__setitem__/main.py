@@ -85,3 +85,4 @@ if __name__ == '__main__':
 
     linked_list[1] = 100
     print(linked_list[1])
+    print(linked_list)

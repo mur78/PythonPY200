@@ -18,6 +18,14 @@ class LinkedList(MutableSequence):
             for value in data:
                 self.append(value)
 
+    # def _check_index(self, index: Any):
+    #
+    #     if not isinstance(index, int):
+    #         raise TypeError()
+    #     if not 0 <= index < self.__len:
+    #         raise IndexError()
+
+
     def append(self, value: Any):
         """ Добавление элемента в конец связного списка. """
         #append_node = Node(value)
@@ -31,13 +39,15 @@ class LinkedList(MutableSequence):
 
         self.__len += 1
 
-    def _step_by_step_on_nodes(self, index: int) -> Node:
+    def _step_by_step_on_nodes(self, index: Any) -> Node:
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
         if not isinstance(index, int):  # todo отдельный метод DRY
             raise TypeError()
 
         if not 0 <= index < self.__len:
             raise IndexError()
+
+        #index_ = self._check_index(index)
 
         current_node = self.head
         for _ in range(index):
@@ -72,6 +82,7 @@ class LinkedList(MutableSequence):
 
         if not 0 <= index < self.__len:
             raise IndexError()
+
 
         if index == 0:
             self.head = self.head.next
@@ -129,7 +140,6 @@ class DoubleLinkedList(LinkedList):
     CLASS_NODE = DoubleLinkedNode
 
     # fixme надо перегружать или нет и почему
-
     # fixme testcase проверить какие типы узлов сидят в DoubleLinkedList (head какого типа???)
 
     @staticmethod
@@ -148,7 +158,8 @@ if __name__ == "__main__":
     linked_list = LinkedList(list_)
     print(linked_list)
 
-    linked_list.insert(100, 100)
+
+    linked_list.insert(3, 100)
     print(linked_list)
 
 
