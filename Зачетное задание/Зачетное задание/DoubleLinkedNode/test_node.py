@@ -23,8 +23,10 @@ class TestNode(unittest.TestCase):
         with self.assertRaises(TypeError, msg="Должна быть вызвана ошибка типа данных"):
             node.is_valid(5)
 
-    """Тесты Double_Node"""
 
+class TestDoubleLinkedNode(unittest.TestCase):
+
+    """Тесты Double_Node"""
     def test_repr_double_node(self):
         double_node = DoubleLinkedNode(3, None, None)
         self.assertEqual(repr(double_node), "DoubleLinkedNode(3, None, None)")
@@ -37,6 +39,13 @@ class TestNode(unittest.TestCase):
         some_d_value = 3
         double_node = DoubleLinkedNode(some_d_value)
         self.assertEqual(str(some_d_value), str(double_node))
+
+    def test_linked_dll_with_node(self):
+        with self.assertRaises(TypeError):
+            DoubleLinkedNode(3, Node(12), None)
+
+        with self.assertRaises(TypeError):
+            DoubleLinkedNode(3, None, Node(12))
 
 
 

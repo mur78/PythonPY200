@@ -1,10 +1,9 @@
-from typing import Any, Optional
-
+rom typing import Any, Optional
 
 class Node:
     """ Класс, который описывает узел связного списка. """
 
-    def __init__(self, value: Any, next_: Optional["Node"] = None):
+    def __init__(self, value: Any, next_: Optional['Node'] = None) -> object:
         """
         Создаем новый узел для односвязного списка
         :param value: Любое значение, которое помещено в узел
@@ -19,11 +18,6 @@ class Node:
     def __str__(self) -> str:
         return str(self.value)
 
-
-    # def is_valid(self, node: Any) -> None:
-    #     if not isinstance(node, (type(None), Node)):
-    #         raise TypeError
-
     @classmethod
     def is_valid(cls, node: Any) -> None:
         if not isinstance(node, (type(None), cls)):
@@ -34,7 +28,7 @@ class Node:
         return self._next
 
     @next.setter
-    def next(self, next_: Optional["Node"]):
+    def next(self, next_: Optional['Node']):
         self.is_valid(next_)
         self._next = next_
 
@@ -44,9 +38,10 @@ class DoubleLinkedNode(Node):
 
     def __init__(self, value: Any,
                  next_: Optional['DoubleLinkedNode'] = None,
-                 prev_: Optional['DoubleLinkedNode'] = None):
+                 prev_: Optional['DoubleLinkedNode'] = None) -> object:
         """
         Создаем новый узел для односвязного списка
+        :rtype: object
         :param value: Любое значение, которое помещено в узел
         :param next_: следующий узел, если он есть
         :param prev_: предыдущий узел, если он есть
@@ -58,12 +53,7 @@ class DoubleLinkedNode(Node):
         """Метод должен возвращать строку, показывающую, как может быть создан экземпляр."""
         next_node = None if self.next is None else f"DoubleLinkedNode({self.next.value})"
         prev_node = None if self.prev is None else f"DoubleLinkedNode({self.prev.value})"
-
         return f"DoubleLinkedNode({self.value}, {next_node}, {prev_node})"
-
-    # def is_valid(self, node: Any) -> None:
-    #     if not isinstance(node, (type(None), DoubleLinkedNode)):
-    #         raise TypeError
 
     @property
     def prev(self):
@@ -76,6 +66,8 @@ class DoubleLinkedNode(Node):
 
 
 if __name__ == "__main__":
+    # todo TestCases for Node, DoubleLinkedNode
+
     node = Node(1, next_=Node(2))
     print(node)
     print(repr(node))
@@ -83,4 +75,3 @@ if __name__ == "__main__":
     double_node = DoubleLinkedNode(2, next_=DoubleLinkedNode(3), prev_=DoubleLinkedNode(1))
     print(double_node)
     print(repr(double_node))
-

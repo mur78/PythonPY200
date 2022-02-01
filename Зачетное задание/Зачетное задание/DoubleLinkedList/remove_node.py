@@ -40,8 +40,6 @@ class LinkedList(MutableSequence):
         if not 0 <= index < self.__len:
             raise IndexError()
 
-        #index_ = self._check_index(index)
-
         current_node = self.head
         for _ in range(index):
             current_node = current_node.next
@@ -79,7 +77,7 @@ class LinkedList(MutableSequence):
         if index == 0:
             self.head = self.head.next
         elif index == self.__len - 1:
-            tail = self.tail  # fixme self.tail.next = None
+            tail = self.tail  # fixme self.tail
             tail.next = None
         else:
             prev_node = self._step_by_step_on_nodes(index - 1)
@@ -90,14 +88,12 @@ class LinkedList(MutableSequence):
 
         self.__len -= 1
 
-    def insert(self, index: int, value: Any) -> None:  # todo test coverage
+    def insert(self, index: int, value: Any) -> None:
         """ Метод вставки узла по индексу. """
 
         if not isinstance(index, int):
             raise TypeError()
-
-        #insert_node = Node(value)  # fixme self.CLASS_NODE
-        insert_node = self.CLASS_NODE(value)
+            insert_node = self.CLASS_NODE(value)
 
         if index == 0:
             insert_node.next = self.head
@@ -113,6 +109,22 @@ class LinkedList(MutableSequence):
             self._linked_nodes(insert_node, next_node)
 
             self.__len += 1
+
+    def index(self, value: Any, start: int = 0, end: int = None) -> int:
+        current_node = self.head
+        for i in range(self.__len):
+            if current_node.value == value:
+                return i
+            else:
+                current_node = current_node.next
+        raise ValueError
+
+    def remove(self, value: Any):
+        if value in self:
+            self.__delitem__(self.index(value))
+        else:
+            raise ValueError
+
 
     def __len__(self) -> int:
         return self.__len
@@ -131,8 +143,6 @@ class DoubleLinkedList(LinkedList):
     """ Класс, который описывает узел связного списка. """
     CLASS_NODE = DoubleLinkedNode
 
-    # fixme надо перегружать или нет и почему
-    # fixme testcase проверить какие типы узлов сидят в DoubleLinkedList (head какого типа???)
 
     @staticmethod
     def _linked_nodes(left: DoubleLinkedNode, right: DoubleLinkedNode) -> None:
@@ -140,13 +150,20 @@ class DoubleLinkedList(LinkedList):
         right.prev = left
 
 
+
+
 if __name__ == "__main__":
     list_ = [1, 2, 3]
     linked_list = LinkedList(list_)
     print(linked_list)
 
+    linked_list.remove(2)
+    print(linked_list)
+
 
     linked_list.insert(3, 100)
     print(linked_list)
+
+
 
 
